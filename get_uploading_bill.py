@@ -231,6 +231,7 @@ def sbis_bill_processing_0(date_from, date_to, name_unloading, name_unloading_ex
 
         doc_assigned_manager.append(var_doc_assigned_manager)
         doc_department.append(var_doc_department)
+        doc_notation.append(var_doc_notation)
 
     def doc_append_exc():
         doc_id_exc.append(var_link)
@@ -2205,6 +2206,7 @@ def sbis_bill_processing_0(date_from, date_to, name_unloading, name_unloading_ex
 
     doc_assigned_manager = []
     doc_department = []
+    doc_notation = []
 
     inside_doc_author = []
     inside_dict_total_sell = []
@@ -2371,8 +2373,11 @@ def sbis_bill_processing_0(date_from, date_to, name_unloading, name_unloading_ex
     # ___________________________________________________________________________________________
     # ___________________________________________________________________________________________
     # ___________________________________________________________________________________________
-
-                
+                try:
+                    var_doc_notation = i["Примечание"]
+                except:
+                    var_doc_notation = ''      
+                    
                 
     # ___________________________________________________________________________________________
     # ___________________________________________________________________________________________
@@ -2566,13 +2571,12 @@ def sbis_bill_processing_0(date_from, date_to, name_unloading, name_unloading_ex
                     
                             
                                     temp_for_list.append(temp_dict_for_list)
-                                    
-                            
                                 
                                 dict_total_payment[f"{var_temp_origin}"] = temp_for_list
+                            else:
+                                pass
                 except:
-                    var_inside_dict_total_sell = ''
-                    var_inside_dict_total_payment = ''
+                    pass
                         
                 
                 var_inside_dict_total_sell = str(dict_total_sell)
@@ -2929,6 +2933,7 @@ def sbis_bill_processing_0(date_from, date_to, name_unloading, name_unloading_ex
         
         "doc_assigned_manager",
         "doc_department",
+        "doc_notation",
         
         "inside_doc_author",
         "dict_total_sell",
@@ -2992,6 +2997,7 @@ def sbis_bill_processing_0(date_from, date_to, name_unloading, name_unloading_ex
 
     doc_assigned_manager,
     doc_department,
+    doc_notation,
 
     inside_doc_author,
     inside_dict_total_sell,
